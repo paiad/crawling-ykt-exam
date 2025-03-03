@@ -11,6 +11,7 @@ with open("./txt/雨课堂测试-id-{}.txt".format(exam_id), 'r', encoding='utf-
 
 from openai import OpenAI
 
+# API_KEY 修改为自己的api_key密钥
 client = OpenAI(api_key=API_KEY, base_url="https://api.deepseek.com")
 
 response = client.chat.completions.create(
