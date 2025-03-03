@@ -18,7 +18,7 @@ mitmdump -s proxy_script.py
 🎯 数据到手，离成功又近了一步！
 
 ### 🌟 **Step 4**  
-运行 `file_transform.py`，生成对应的 `雨课堂测试-id-{exam—id}.docx` 文档 📜  
+🍃 运行 `file_transform.py`，生成对应的 `雨课堂测试-id-{exam—id}.docx` 文档 📜  
 
 ### 🌟 **Step 5**(可选)
-运行 `deepseek_deal.py`，将 API_KEY 换为自己的即可实现对应测试问题的答案生成 ✅
+🍀 运行 `deepseek_deal.py`，将 API_KEY 换为自己的即可实现对应测试问题的答案生成 ✅
