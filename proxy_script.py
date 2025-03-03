@@ -34,9 +34,9 @@ def response(flow: http.HTTPFlow) -> None:
     """
     target_url = "https://examination.xuetangx.com/exam_room/show_paper?exam_id="
     exam_id = pd.read_csv('exam_id.csv')['exam_id'].iloc[0]
-
     target_url += str(exam_id)
-    if target_url == flow.request.pretty_url:
+
+    if flow.request.pretty_url == target_url:
 
         # 尝试解析和打印响应内容
         if flow.response.content:
@@ -50,7 +50,7 @@ def response(flow: http.HTTPFlow) -> None:
                     print(pretty_json)
 
                     problems = json_data["data"]["problems"]
-                    print(problems)
+                    # print(problems)
                     res = ""
                     index = 0
                     for problem in problems:
@@ -58,16 +58,20 @@ def response(flow: http.HTTPFlow) -> None:
                         Options = ""
                         body = problem["Body"]
                         type = problem["Type"]
+                        if "Answer" in problem:
+                            answer = str(problem["Answer"])
+                        else:
+                            answer = ""
                         letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"]
                         if type == "SingleChoice":
                             """
-                            [{'key': 'C', 'value': 'ROM'}, 
-                            {'key': 'B', 'value': 'Hard disks'}, 
-                            {'key': 'A', 'value': 'RAM'}, 
+                            [{'key': 'C', 'value': 'ROM'},
+                            {'key': 'B', 'value': 'Hard disks'},
+                            {'key': 'A', 'value': 'RAM'},
                             {'key': 'D', 'value': 'Solid-state storage'}]
                             """
                             for ele in problem["Options"]:
-                                Options += " " + letters[count] + ". " + ele["value"] + "\n"
+                                Options += letters[count] + ". " + ele["value"] + "\n"
                                 count += 1
                             Options += "\n单选题的答案为："
                             problem_type = "单选题"
@@ -91,8 +95,8 @@ def response(flow: http.HTTPFlow) -> None:
                         Options_new = str(Options).replace("&nbsp", "").strip(" ")
                         res += ("===第{}题 题型为：{}===\n".format(index, problem_type)
                                 + body_new + "\n"
-                                + Options_new +
-                                "\n\n=========================\n\n\n")
+                                + Options_new + answer
+                                +"\n\n=========================\n\n\n")
                         res = remove_html_tags(res)
                     save_to_file(f"爬取地址URL：\n{flow.request.pretty_url}\n内容: \n{res}",
                                  filename="./txt/雨课堂测试-id-{}.txt".format(exam_id))
@@ -100,6 +104,8 @@ def response(flow: http.HTTPFlow) -> None:
                     print(f"Response Content: {content[:500]}...")  # 限制长度避免输出过多
             except UnicodeDecodeError:
                 print(f"Response Content (raw): {flow.response.content[:500]}...")
+
+
 
 
 # 可选：保存数据到文件
