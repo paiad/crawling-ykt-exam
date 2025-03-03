@@ -1,8 +1,8 @@
-import re
-
 from mitmproxy import http
 import pandas as pd
 import json
+
+from tools.utils import remove_html_tags, save_to_file
 
 
 # 请求拦截和修改
@@ -105,19 +105,3 @@ def response(flow: http.HTTPFlow) -> None:
             except UnicodeDecodeError:
                 print(f"Response Content (raw): {flow.response.content[:500]}...")
 
-
-
-
-# 可选：保存数据到文件
-def save_to_file(data, filename="captured_data.txt"):
-    with open(filename, 'w', encoding='utf-8') as f:
-        f.write(data + "\n\n")
-
-
-# 如果你想保存数据，可以在 response 函数中调用
-# save_to_file(f"URL: {flow.request.pretty_url}\nContent: {content}")
-
-# 使用正则表达式去除 HTML 标签
-def remove_html_tags(text):
-    clean_text = re.sub(r'<[^>]+>', '', text)
-    return clean_text
