@@ -1,6 +1,23 @@
 > 🚀 **前提条件**：修改主机的代理端口为 **8080** ⚙️  
 > （确保代理设置正确，才能愉快地开始爬取哦！）
 
+### 🌟 **Step -1**
+配置自己的虚拟环境
+```bash
+python -m venv mitm_env
+```
+激活虚拟环境
+```bahs
+mitm_env\Scripts\activate
+```
+下载相应的依赖
+```bash
+pip install mitmproxy
+pip install pandas
+pip install python-docx   
+```
+
+
 ### 🌟 **Step 0**
 🍄 在根目录下分别创建`4`个空的文件夹，分别命名为：txt、docs、md、deepseek。
 ![img](https://cdn.jsdelivr.net/gh/paiad/picture-bed@main/img/ykt-url-v2.png)
@@ -10,12 +27,12 @@
 ![img](https://cdn.jsdelivr.net/gh/paiad/picture-bed@main/img/ykt-url-v4.png)
 📌 小贴士：考试号要写对，不然会抓不到数据的啦！
 
-### 🌟 **Step 2**  
-![img](https://cdn.jsdelivr.net/gh/paiad/picture-bed@main/img/ykt-url-v3.png)
+### 🌟 **Step 2**
 进入 `proxy_script.py` 所在根目录，然后运行：  
 ```bash
 mitmdump -s proxy_script.py
 ```  
+![img](https://cdn.jsdelivr.net/gh/paiad/picture-bed@main/img/ykt-url-v3.png)
 💻 这步会启动代理脚本，准备好捕捉数据吧！
 
 ### 🌟 **Step 3**  
