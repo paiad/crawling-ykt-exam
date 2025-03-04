@@ -2,7 +2,7 @@
 > （确保代理设置正确，才能愉快地开始爬取哦！）
 
 ### 🌟 **Step 0**
-🍄 在根目录下分别创建三个空的文件夹，分别命名为：txt、docs、deepseek。
+🍄 在根目录下分别创建`4`个空的文件夹，分别命名为：txt、docs、md、deepseek。
 
 ### 🌟 **Step 1**  
 在 `exam_id.csv`文件 输入你需要爬取的考试号 ✍️  
@@ -17,6 +17,7 @@ mitmdump -s proxy_script.py
 
 ### 🌟 **Step 3**  
 刷新需要爬取的 **雨课堂** 的 exam 页面 ✨  
+![img](https://cdn.jsdelivr.net/gh/paiad/picture-bed@main/img/ykt-url-v1.png)
 完成后，会自动生成对应的 `雨课堂测试-id-{exam—id}.txt` 文件 📄  
 🎯 数据到手，离成功又近了一步！
 
@@ -24,4 +25,5 @@ mitmdump -s proxy_script.py
 🍃 运行 `file_transform.py`，生成对应的 `雨课堂测试-id-{exam—id}.docx` 文档 📜  
 
 ### 🌟 **Step 5**(可选)
-🍀 运行 `deepseek_deal.py`，将 API_KEY 换为自己的即可实现对应测试问题的答案生成 ✅
+🍀 运行 `deepseek_deal.py`，将 API_KEY 换为自己的即可实现对应测试问题的答案生成 ✅### 🌟 **Step 5**(可选)
+🍀 运行 `md_proxy.py`，可获得md文件夹下的对应的md文档 ✅

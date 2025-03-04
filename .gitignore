@@ -3,6 +3,7 @@ tools/private_key.py
 txt
 deepseek
 docs
+md
 exam_id.csv
 __pycache__/
 *.pyc
