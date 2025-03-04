@@ -1,5 +1,9 @@
 mitm_env/
 tools/private_key.py
+txt
+deepseek
+docs
+exam_id.csv
 __pycache__/
 *.pyc
 *.log
