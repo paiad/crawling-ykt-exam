@@ -1,4 +1,5 @@
 > 🚀 **前提条件**：在执行Step2时，应先修改主机的代理端口为 **8080** 
+> 
 > （确保代理设置正确，才能愉快地开始爬取哦！）
 
 ### 🌟 **Step -1**
@@ -35,7 +36,7 @@ mitmdump -s proxy_script.py
 
 **Important**:
 >为了使客户端信任 mitmproxy 提供的 CA 证书，从而拦截和解密 HTTPS 请求的具体内容。
-- 访问网址[http://mitm.it](http://mitm.it), 根据系统下载相应的证书
+- 访问网址[http://mitm.it](http://mitm.it), 根据系统下载并安装相应的证书
 
 ### 🌟 **Step 3**
 - 刷新需要爬取的 **雨课堂** 的 exam 页面
