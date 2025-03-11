@@ -71,11 +71,11 @@ def response(flow: http.HTTPFlow) -> None:
                             {'key': 'D', 'value': 'Solid-state storage'}]
                             """
                             for ele in problem["Options"]:
-                                Options += letters[count] + ". " + ele["value"]
+                                Options += letters[count] + ". " + ele["value"] + "\n"
                                 count += 1
                         elif type == "MultipleChoice":
                             for ele in problem["Options"]:
-                                Options += letters[count] + ". " + ele["value"]
+                                Options += letters[count] + ". " + ele["value"] + "\n"
                                 count += 1
                         elif type == "FillBlank":
                             Options = ""
@@ -84,8 +84,8 @@ def response(flow: http.HTTPFlow) -> None:
                         else:
                             Options = "**暂无解析，请及时联系作者补充！**"
                         index += 1
-                        body_new = str(body).replace("\n", "").replace("&nbsp", "").strip(" ")
-                        Options_new = str(Options).replace("&nbsp", "").strip(" ")+"\n"
+                        body_new = str(body).replace("\n", "").replace("&nbsp", "").replace("()()","()").strip(" ")
+                        Options_new = str(Options).replace("&nbsp", "").strip(" ") + "\n"
                         res += ("```html\n" + str(index) + "."
                                 + body_new + "\n"
                                 + Options_new
