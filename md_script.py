@@ -55,7 +55,7 @@ def process_single_choice(problem: Dict, problem_id: str, df: pd.DataFrame, lett
     result = df[df['problem_id'] == problem_id]['result'].iloc[0]
     answer = df[df['problem_id'] == problem_id]['answer'].iloc[0]
     right_pos = next(i for i, opt in enumerate(problem["Options"]) if opt["key"] in answer)
-    options += f"```\n::: details 点我查看答案 & 解析\n{letters[right_pos]}\n:::"
+    options += f"```\n::: details 点我查看答案 & 解析\n['{letters[right_pos]}']\n:::"
     return options, "单选题"
 
 
@@ -67,7 +67,7 @@ def process_multiple_choice(problem: Dict, problem_id: str, df: pd.DataFrame, le
         options += f"{letters[i]}. {ele['value']}\n"
         if ele["key"] in df[df['problem_id'] == problem_id]['answer'].iloc[0]:
             right_positions.append(letters[i])
-    options += f"\n正确答案为：{right_positions}"
+    options += f"\n正确答案为：['{right_positions}']"
     return options, "多选题"
 
 
