@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 读取两个CSV文件
-df1 = pd.read_csv('./cache/dwh.csv')
+df1 = pd.read_csv('cache/personal.csv')
 df2 = pd.read_csv('./cache/other.csv')
 
 # 确保列名一致
