@@ -64,7 +64,7 @@ def response(flow: http.HTTPFlow) -> None:
                             "result": problem["result"],
                         })
                     df = pd.DataFrame(data, columns=["problem_id", "result"])
-                    df.to_csv("./cache/雨课堂测试-id-{}.csv".format(exam_id), index=False, encoding='utf-8-sig')
+                    df.to_csv("./cache/personal.csv".format(exam_id), index=False, encoding='utf-8-sig')
 
                 except json.JSONDecodeError:
                     print(f"Response Content: {content[:500]}...")  # 限制长度避免输出过多
