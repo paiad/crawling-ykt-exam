@@ -41,7 +41,7 @@ def process_options(problem: Dict, problem_id: str, df: pd.DataFrame) -> tuple[s
         options = f"```\n::: details 点我查看答案 & 解析\n{df[df['problem_id'] == problem_id]['answer'].iloc[0]}\n:::"
         problem_type = "填空题" if problem["Type"] == "FillBlank" else "判断题"
     else:
-        options = "题目类型属于主观题，超出识别范围，请回到原卷识别该题！"
+        options = "题目类型属于主观题，超出识别范围，请回到原卷识别该题！"+"\n```\n"+"::: details 点我查看答案 & 解析\n:::"
         problem_type = "主观题"
 
     return options, problem_type
@@ -100,7 +100,7 @@ def response(flow: http.HTTPFlow) -> None:
                                f"{options}\n\n")
 
         cleaned_content = remove_html_tags(result_content)
-        save_to_file(cleaned_content, f"./txt/雨课堂测试-id-{exam_id}.txt")
+        save_to_file(cleaned_content, f"./md/雨课堂测试-id-{exam_id}.md")
 
         print("====================================================")
         print(json.dumps(json_data, indent=2, ensure_ascii=False))
