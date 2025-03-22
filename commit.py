@@ -69,6 +69,9 @@ def response(flow: http.HTTPFlow) -> None:
                             answer = ""
                         letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "ERROR"]
                         df = pd.read_csv("./cache/雨课堂测试-id-{}.csv".format(exam_id))
+                        df_diff = pd.read_csv("./contrast/diff_problem_ids.csv")
+                        problem_ids = df_diff["problem_id"].tolist()
+
                         if type == "SingleChoice":
                             """
                             ele:{'key': 'C', 'value': 'ROM'}
@@ -113,13 +116,17 @@ def response(flow: http.HTTPFlow) -> None:
                         index += 1
                         body_new = str(body).replace("\n", "").replace("&nbsp", "").strip(" ")
                         Options_new = str(Options).replace("&nbsp", "").strip(" ")
-                        res += ("===第{}题 题型为：{}===\n".format(index, problem_type)
-                                + body_new + "\n"
-                                + Options_new + answer
-                                + "\n\n=========================\n\n\n")
+
+                        spec = "===第{}题 题型为：{}===\n".format(index,
+                                                                 problem_type) + body_new + "\n" + Options_new + answer + "\n\n=========================\n\n\n"
+
+                        if problem_id in problem_ids:
+                            spec = "```html\n" + "???" + spec + "\n```\n"
+
+                        res = res + spec
                         res = remove_html_tags(res)
                     save_to_file(f"爬取地址URL：\n{flow.request.pretty_url}\n内容: \n{res}",
-                                 filename="./txt/cache-雨课堂测试-id-{}.txt".format(exam_id))
+                                 filename="./md/cache-雨课堂测试-id-{}.md".format(exam_id))
                 except json.JSONDecodeError:
                     print(f"Response Content: {content[:500]}...")  # 限制长度避免输出过多
             except UnicodeDecodeError:

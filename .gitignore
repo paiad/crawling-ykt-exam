@@ -6,6 +6,7 @@ docs
 md
 res
 cache
+contrast
 exam_id.csv
 __pycache__/
 *.pyc

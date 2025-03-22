@@ -53,4 +53,5 @@ mitmdump -s proxy_script.py
 > 2. exam_id -> res_script.py -> md_script.py (获得考试内容及答案笔记)
 
 
-> exam_id -> cache_res.py ->commit.py
+> exam_id -> cache_res.py -> 得到【个人.csv】-> 对比other.csv
+> -> contrast.py -> commit.py
