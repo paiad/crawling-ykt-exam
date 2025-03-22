@@ -67,7 +67,7 @@ def response(flow: http.HTTPFlow) -> None:
                             answer = str(problem["Answer"])
                         else:
                             answer = ""
-                        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N","ERROR"]
+                        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "ERROR"]
                         df = pd.read_csv("./cache/雨课堂测试-id-{}.csv".format(exam_id))
                         if type == "SingleChoice":
                             """
@@ -84,7 +84,7 @@ def response(flow: http.HTTPFlow) -> None:
                             for ele in problem["Options"]:
                                 # ['B']
                                 key_res = df[df['problem_id'] == problem_id]['result'].iloc[0]
-                                print("=============\n"+ele['key'] + key_res+"\n======")
+                                print("=============\n" + ele['key'] + key_res + "\n======")
                                 if ele['key'] in key_res:
                                     label = count
                                 Options += letters[count] + ". " + ele["value"] + "\n"
@@ -96,7 +96,8 @@ def response(flow: http.HTTPFlow) -> None:
                                 key_res = df[df['problem_id'] == problem_id]['result'].iloc[0]
                                 if ele['key'] in key_res:
                                     label_multi.append(count)
-                                Options += letters[count] + ". " + ele["value"] + "\n"+str([letters[x] for x in label_multi])
+                                Options += letters[count] + ". " + ele["value"] + "\n" + str(
+                                    [letters[x] for x in label_multi])
                                 count += 1
                             Options += "\n多选题的答案为："
                             problem_type = "多选题"
@@ -104,8 +105,8 @@ def response(flow: http.HTTPFlow) -> None:
                             Options = "\n填空题的答案为：\n" + str(df[df['problem_id'] == problem_id]['result'].iloc[0])
                             problem_type = "填空题"
                         elif type == "Judgement":
-                            Options = "判断题的答案为："
-                            problem_type = "\n判断题"++ str(df[df['problem_id'] == problem_id]['result'].iloc[0])
+                            Options = "\n判断题的答案为：" + str(df[df['problem_id'] == problem_id]['result'].iloc[0])
+                            problem_type = "判断题"
                         else:
                             Options = "题目类型属于主观题，超出识别范围，请回到原卷识别该题！"
                             problem_type = "主观题"
@@ -115,7 +116,7 @@ def response(flow: http.HTTPFlow) -> None:
                         res += ("===第{}题 题型为：{}===\n".format(index, problem_type)
                                 + body_new + "\n"
                                 + Options_new + answer
-                                +"\n\n=========================\n\n\n")
+                                + "\n\n=========================\n\n\n")
                         res = remove_html_tags(res)
                     save_to_file(f"爬取地址URL：\n{flow.request.pretty_url}\n内容: \n{res}",
                                  filename="./txt/cache-雨课堂测试-id-{}.txt".format(exam_id))
@@ -123,4 +124,3 @@ def response(flow: http.HTTPFlow) -> None:
                     print(f"Response Content: {content[:500]}...")  # 限制长度避免输出过多
             except UnicodeDecodeError:
                 print(f"Response Content (raw): {flow.response.content[:500]}...")
-
