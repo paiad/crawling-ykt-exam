@@ -67,7 +67,7 @@ def process_multiple_choice(problem: Dict, problem_id: str, df: pd.DataFrame, le
         options += f"{letters[i]}. {ele['value']}\n"
         if ele["key"] in df[df['problem_id'] == problem_id]['answer'].iloc[0]:
             right_positions.append(letters[i])
-    options += f"\n正确答案为：['{right_positions}']"
+    options += f"```\n::: details 点我查看答案 & 解析\n{right_positions}\n:::"
     return options, "多选题"
 
 
