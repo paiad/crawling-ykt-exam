@@ -8,7 +8,7 @@ import shutil
 
 def clear_directories():
     # 要清理的目录列表
-    directories = ['res', 'md', 'txt']
+    directories = ['res', 'md', 'txt', 'cache', 'contrast']
 
     # 获取当前工作目录
     current_dir = os.getcwd()

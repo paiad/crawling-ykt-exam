@@ -18,9 +18,9 @@ try:
     df = pd.DataFrame(response.json()["data"]["results"])
 
     # 保存为 CSV
-    df[["problem_id", "result"]].to_csv("./cache/other.csv", index=False)
+    df[["problem_id", "result"]].to_csv("../cache/other.csv", index=False)
 
-    print("数据已保存到 exam_results.csv")
+    print("数据已保存到 other.csv")
 
 except requests.exceptions.RequestException as e:
     print(f"请求失败: {e}")

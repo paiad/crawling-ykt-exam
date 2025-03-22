@@ -42,22 +42,17 @@ mitmdump -s proxy_script.py
 ![img](https://cdn.jsdelivr.net/gh/paiad/picture-bed@main/img/ykt-url-v1.png)
 完成后，会自动生成对应的 `雨课堂测试-id-{exam—id}.txt` 文件(txt文件夹下)
 
-### 🌟 **Step 4**(可选)
-- 运行 `deepseek_deal.py`，将 API_KEY 换为自己的即可实现对应测试问题的答案生成(deepseek文件夹下)
-
-- 运行 `md_proxy.py`，可获得md文档(md文件夹下)
-
 ### 获取考试内容以及答案
 >[!important]
 > 1. exam_id -> proxy_script (获得考试内容)
 > 2. exam_id -> res_script.py -> md_script.py (获得考试内容及答案笔记)
 
 ### other.csv
-填写other的Token，执行paiad_http.py
+填写other的Token，执行paiad_http.py(tools)
 ### 快速校对答案
 >[!note]
 > exam_id -> cache_res.py -> 得到 personal.csv->
-> -> contrast.py -> commit.py
+> -> contrast.py(tools) -> commit.py
 
 输入exam_id，执行以下命令，会在cache文件夹中出现personal.csv文件
 ```bash

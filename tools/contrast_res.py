@@ -1,8 +1,8 @@
 import pandas as pd
 
 # 读取两个CSV文件
-df1 = pd.read_csv('cache/personal.csv')
-df2 = pd.read_csv('./cache/other.csv')
+df1 = pd.read_csv('../cache/personal.csv')
+df2 = pd.read_csv('../cache/other.csv')
 
 # 确保列名一致
 df1.columns = ['problem_id', 'result']
@@ -23,4 +23,4 @@ for index, row in diff_df.iterrows():
     print(f"problem_id: {row['problem_id']}, result_file1: {row['result_file1']}, result_file2: {row['result_file2']}")
 
 # 将problem_id单独保存为CSV文件
-diff_df[['problem_id']].to_csv('./contrast/diff_problem_ids.csv', index=False)
+diff_df[['problem_id']].to_csv('../contrast/diff_problem_ids.csv', index=False)
