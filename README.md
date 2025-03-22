@@ -51,3 +51,6 @@ mitmdump -s proxy_script.py
 >[!important]
 > 1. exam_id -> proxy_script (获得考试内容)
 > 2. exam_id -> res_script.py -> md_script.py (获得考试内容及答案笔记)
+
+
+> exam_id -> cache_res.py ->commit.py

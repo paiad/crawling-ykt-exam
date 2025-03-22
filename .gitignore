@@ -5,6 +5,7 @@ deepseek
 docs
 md
 res
+cache
 exam_id.csv
 __pycache__/
 *.pyc
