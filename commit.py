@@ -68,7 +68,7 @@ def response(flow: http.HTTPFlow) -> None:
                         else:
                             answer = ""
                         letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "ERROR"]
-                        df = pd.read_csv("./cache/雨课堂测试-id-{}.csv".format(exam_id))
+                        df = pd.read_csv("./cache/personal.csv".format(exam_id))
                         df_diff = pd.read_csv("./contrast/diff_problem_ids.csv")
                         problem_ids = df_diff["problem_id"].tolist()
 
