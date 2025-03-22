@@ -78,29 +78,34 @@ def response(flow: http.HTTPFlow) -> None:
                             {'key': 'A', 'value': 'RAM'},
                             {'key': 'D', 'value': 'Solid-state storage'}]
                             """
+                            print("&&&&&&&&&&&&&&&&&&&&&&&")
+                            label = -1
+                            label_multi = []
                             for ele in problem["Options"]:
-                                label = -1
                                 # ['B']
                                 key_res = df[df['problem_id'] == problem_id]['result'].iloc[0]
-
+                                print("=============\n"+ele['key'] + key_res+"\n======")
                                 if ele['key'] in key_res:
                                     label = count
                                 Options += letters[count] + ". " + ele["value"] + "\n"
                                 count += 1
-                            Options += "\n我的单选题的答案为：" + letters[label]
+                            Options += "\n我的单选题的答案为：\n" + letters[label]
                             problem_type = "单选题"
                         elif type == "MultipleChoice":
                             for ele in problem["Options"]:
-                                Options += letters[count] + ". " + ele["value"] + "\n"
+                                key_res = df[df['problem_id'] == problem_id]['result'].iloc[0]
+                                if ele['key'] in key_res:
+                                    label_multi.append(count)
+                                Options += letters[count] + ". " + ele["value"] + "\n"+str([letters[x] for x in label_multi])
                                 count += 1
                             Options += "\n多选题的答案为："
                             problem_type = "多选题"
                         elif type == "FillBlank":
-                            Options = "填空题的答案为："
+                            Options = "\n填空题的答案为：\n" + str(df[df['problem_id'] == problem_id]['result'].iloc[0])
                             problem_type = "填空题"
                         elif type == "Judgement":
                             Options = "判断题的答案为："
-                            problem_type = "判断题"
+                            problem_type = "\n判断题"++ str(df[df['problem_id'] == problem_id]['result'].iloc[0])
                         else:
                             Options = "题目类型属于主观题，超出识别范围，请回到原卷识别该题！"
                             problem_type = "主观题"
@@ -109,7 +114,7 @@ def response(flow: http.HTTPFlow) -> None:
                         Options_new = str(Options).replace("&nbsp", "").strip(" ")
                         res += ("===第{}题 题型为：{}===\n".format(index, problem_type)
                                 + body_new + "\n"
-                                + Options_new + answer+f"\nproblem_id:\n{problem_id}\n"
+                                + Options_new + answer
                                 +"\n\n=========================\n\n\n")
                         res = remove_html_tags(res)
                     save_to_file(f"爬取地址URL：\n{flow.request.pretty_url}\n内容: \n{res}",
