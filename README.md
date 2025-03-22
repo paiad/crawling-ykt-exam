@@ -20,8 +20,7 @@ pip install python-docx
 
 
 ### 🌟 **Step 0**
-- 在根目录下分别创建`4`个空的文件夹，分别命名为：txt、md、deepseek。
-![img](https://cdn.jsdelivr.net/gh/paiad/picture-bed@main/img/ykt-url-v2.png)
+- 在根目录下分别创建n个空的文件夹，分别命名为：txt、md、cache、contrast、res、deepseek。
 
 ### 🌟 **Step 1**  
 - 在 `exam_id.csv`文件 输入你需要爬取的考试号 
@@ -48,10 +47,24 @@ mitmdump -s proxy_script.py
 
 - 运行 `md_proxy.py`，可获得md文档(md文件夹下)
 
+### 获取考试内容以及答案
 >[!important]
 > 1. exam_id -> proxy_script (获得考试内容)
 > 2. exam_id -> res_script.py -> md_script.py (获得考试内容及答案笔记)
 
+### other.csv
+填写other的Token，执行paiad_http.py
+### 快速校对答案
 >[!note]
-> exam_id -> cache_res.py -> 得到 personal.csv-> 对比other.csv
+> exam_id -> cache_res.py -> 得到 personal.csv->
 > -> contrast.py -> commit.py
+
+输入exam_id，执行以下命令，会在cache文件夹中出现personal.csv文件
+```bash
+mitmdump -s cache_res.py
+```  
+拿到别人的csv文件，命名为other.csv，放置于cache目录下，之后执行run contrast.py
+接下来执行以下命令
+```bash
+mitmdump -s commit.py
+```  
