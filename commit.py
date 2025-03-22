@@ -118,7 +118,7 @@ def response(flow: http.HTTPFlow) -> None:
                                 +"\n\n=========================\n\n\n")
                         res = remove_html_tags(res)
                     save_to_file(f"爬取地址URL：\n{flow.request.pretty_url}\n内容: \n{res}",
-                                 filename="./txt/雨课堂测试-id-{}.txt".format(exam_id))
+                                 filename="./txt/cache-雨课堂测试-id-{}.txt".format(exam_id))
                 except json.JSONDecodeError:
                     print(f"Response Content: {content[:500]}...")  # 限制长度避免输出过多
             except UnicodeDecodeError:
