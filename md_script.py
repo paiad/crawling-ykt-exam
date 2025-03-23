@@ -98,7 +98,7 @@ def response(flow: http.HTTPFlow) -> None:
             result_content += (f"```html\n"
                                f"{index}.{body}\n"
                                f"{options}\n\n")
-
+        result_content = result_content.replace("&nbsp;", "")
         cleaned_content = remove_html_tags(result_content)
         save_to_file(cleaned_content, f"./md/雨课堂测试-id-{exam_id}.md")
 
