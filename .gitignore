@@ -1,5 +1,6 @@
 mitm_env/
 tools/private_key.py
+tools/to_pretty_json.py
 txt
 deepseek
 docs
