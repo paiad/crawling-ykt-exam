@@ -58,6 +58,7 @@ def response(flow: http.HTTPFlow) -> None:
                         Options = ""
                         body = problem["Body"]
                         type = problem["Type"]
+                        problem_id = problem["problem_id"]
                         if "Answer" in problem:
                             answer = str(problem["Answer"])
                         else:
@@ -93,10 +94,10 @@ def response(flow: http.HTTPFlow) -> None:
                         index += 1
                         body_new = str(body).replace("\n", "").replace("&nbsp", "").strip(" ")
                         Options_new = str(Options).replace("&nbsp", "").strip(" ")
-                        res += ("===第{}题 题型为：{}===\n".format(index, problem_type)
+                        res += ("===第{}题 题型为：{}==={}==\n".format(index, problem_type, problem_id)
                                 + body_new + "\n"
                                 + Options_new + answer
-                                +"\n\n=========================\n\n\n")
+                                + "\n\n=========================\n\n\n")
                         res = remove_html_tags(res)
                     save_to_file(f"爬取地址URL：\n{flow.request.pretty_url}\n内容: \n{res}",
                                  filename="./txt/雨课堂测试-id-{}.txt".format(exam_id))
@@ -104,4 +105,3 @@ def response(flow: http.HTTPFlow) -> None:
                     print(f"Response Content: {content[:500]}...")  # 限制长度避免输出过多
             except UnicodeDecodeError:
                 print(f"Response Content (raw): {flow.response.content[:500]}...")
-
