@@ -94,7 +94,7 @@ def response(flow: http.HTTPFlow) -> None:
                         index += 1
                         body_new = str(body).replace("\n", "").replace("&nbsp", "").strip(" ")
                         Options_new = str(Options).replace("&nbsp", "").strip(" ")
-                        res += ("===第{}题 题型为：{}==={}==\n".format(index, problem_type, problem_id)
+                        res += ("===第{}题 题型为：{}===ProblemId：{}==\n".format(index, problem_type, problem_id)
                                 + body_new + "\n"
                                 + Options_new + answer
                                 + "\n\n=========================\n\n\n")
