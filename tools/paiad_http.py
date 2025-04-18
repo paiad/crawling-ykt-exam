@@ -4,7 +4,7 @@ import pandas as pd
 from tools.private_key import TOKEN
 
 # 请求部分
-url = "https://examination.xuetangx.com/exam_room/cache_results?exam_id=3043182"
+url = "https://examination.xuetangx.com/exam_room/cache_results?exam_id={}".format("123456")
 headers = {
     "cookie": "x_access_token={};".format(TOKEN)
 }
