@@ -38,7 +38,7 @@ def response(flow: http.HTTPFlow) -> None:
                         problem_id = problem["problem_id"]
                         answer = str(problem.get("Answer", ""))  # Use get() with default empty string
                         letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "ERROR"]
-                        df = pd.read_csv("./cache/personal.csv")
+                        df = pd.read_csv("cache/personal.csv")
                         df_diff = pd.read_csv("./contrast/diff_problem_ids.csv")
                         problem_ids = df_diff["problem_id"].tolist()
 
