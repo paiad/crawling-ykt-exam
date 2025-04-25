@@ -47,6 +47,14 @@ mitmdump -s proxy_script.py
 > 1. exam_id -> proxy_script (获得考试内容)
 > 2. exam_id -> res_script.py -> md_script.py (获得考试内容及答案笔记)
 
+#### Step1 
+```bash
+mitmdump -s res_script.py
+```  
+#### Step2
+```bash
+mitmdump -s md_script.py
+```  
 ### other.csv
 填写other的Token，执行paiad_http.py(tools)
 ### 快速校对答案

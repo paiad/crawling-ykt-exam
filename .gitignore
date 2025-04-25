@@ -1,6 +1,7 @@
 mitm_env/
 tools/private_key.py
 tools/to_pretty_json.py
+tools/paiad_http.py
 txt
 deepseek
 docs
