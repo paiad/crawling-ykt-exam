@@ -55,6 +55,7 @@ mitmdump -s md_script.py
 ```bash
 mitmdump -s cache_res.py
 ```  
+
 拿到别人的csv文件，命名为other.csv，放置于cache目录下，之后执行run contrast.py，接下来执行以下命令
 ```bash
 mitmdump -s commit.py
