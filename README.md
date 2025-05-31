@@ -34,13 +34,8 @@ mitmdump -s proxy_script.py
 
 ## 获得考试笔记
 >[!important]
-> 填写exam_id -> run res_script.py -> run md_script.py (获得考试内容及答案笔记)
+> 填写exam_id -> run md_script.py (获得考试内容及答案笔记)
 
-#### Step1 
-```bash
-mitmdump -s res_script.py
-```  
-#### Step2
 ```bash
 mitmdump -s md_script.py
 ```  
