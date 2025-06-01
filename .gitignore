@@ -1,6 +1,7 @@
 txt
 md
 res
+exam_id.csv
 __pycache__/
 *.pyc
 *.log
