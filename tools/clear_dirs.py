@@ -1,14 +1,10 @@
-# @Software  :PyCharm
-# @Author    : paiad
-# @File      : clear_dirs.py
-# @Time      : 2025-03-22 16:21
 import os
 import shutil
 
 
 def clear_directories():
     # 要清理的目录列表
-    directories = ['../res', '../md', '../txt', '../cache', '../contrast']
+    directories = ['../res', '../md', '../txt']
 
     # 获取当前工作目录
     current_dir = os.getcwd()

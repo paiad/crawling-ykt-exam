@@ -1,8 +1,3 @@
-# @Software  : PyCharm
-# @Author    : paiad
-# @File      : set_port.py
-# @Time      : 2025-04-27 14:36
-
 import winreg
 import ctypes
 

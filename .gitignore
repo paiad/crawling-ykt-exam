@@ -1,15 +1,6 @@
-mitm_env/
-tools/private_key.py
-tools/to_pretty_json.py
-tools/paiad_http.py
 txt
-deepseek
-docs
 md
 res
-cache
-contrast
-exam_id.csv
 __pycache__/
 *.pyc
 *.log
