@@ -27,7 +27,7 @@ mitmdump -s proxy_script.py
 - 刷新需要爬取的 **雨课堂** 的 exam 页面
 完成后，会自动生成对应的 `雨课堂测试-id-{exam—id}.txt` 文件(txt文件夹下)
 
->[!note]上述完成后，此后只要设置好 port: 8080，然后在填写exam_id正确的情况下，运行以下命令，并在此之后刷新对应的页面
+>[!info]上述完成后，此后只要设置好 port: 8080，然后在填写exam_id正确的情况下，运行以下命令，并在此之后刷新对应的页面
 ```bash
 mitmdump -s proxy_script.py
 ```
